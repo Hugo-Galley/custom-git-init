@@ -21,8 +21,12 @@ guidelines_list=$(
     done
 
     # Récupération des guidelines dispo sur le web
-    while IFS="=" read -r name link; do
-        echo "- [$name]($link)"
+    while read -r line; do
+        if [[ "$line" == *"="* ]]; then
+            name="${line%%=*}"
+            link="${line#*=}"
+            echo "- [$name]($link)"
+        fi
     done < custom-git-init/guidelines/web/link.md
 )
 
