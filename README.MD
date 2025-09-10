@@ -14,9 +14,9 @@ Par défaut, il s'agit d'une licence *MIT*
 ## Configuration
 1) Téléchargez le fichier `git-init.sh` et placez-le à un endroit où il restera.
 2) Ouvrez votre terminal et tapez :
-    ```bash
-     nano ~/.zshrc
-     ``` 
+  ```bash
+  nano ~/.zshrc
+  ``` 
   afin d'ouvrir le fichier de configuration de votre shell `zsh`.
 3) Accordez les droits d'exécution au fichier `git-init.sh` grâce à cette commande :
 ```bash
