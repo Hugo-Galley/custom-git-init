@@ -13,11 +13,21 @@ folder_name=$(basename "$PWD")
 year=$(date +%Y)
 # Création de la liste des guidelines à suivres
 guidelines_list=$(
+    # Récupération des guidelines sur le repo
     for file in custom-git-init/guidelines/*; do
         name="$(basename "$file")"
         echo "- [${name%.*}](https://github.com/Hugo-Galley/custom-git-init/tree/main/guidelines/$name)"
     done
+
+    # Récupération des guidelines dispo sur le web
+    while IFS=":" read -r name link; do
+        echo "- [$name]($link)"
+    done < custom-git-init/guidelines/web/link.md
 )
+
+
+
+
 export folder_name year guidelines_list
 envsubst < README.MD > README.tmp && mv README.tmp README.MD
 envsubst < LICENCE.MD > LICENCE.tmp && mv LICENCE.tmp LICENCE.MD
