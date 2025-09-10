@@ -15,12 +15,13 @@ year=$(date +%Y)
 guidelines_list=$(
     # Récupération des guidelines sur le repo
     for file in custom-git-init/guidelines/*; do
+        [[ -f "$file" ]] || continue
         name="$(basename "$file")"
         echo "- [${name%.*}](https://github.com/Hugo-Galley/custom-git-init/tree/main/guidelines/$name)"
     done
 
     # Récupération des guidelines dispo sur le web
-    while IFS=":" read -r name link; do
+    while IFS="=" read -r name link; do
         echo "- [$name]($link)"
     done < custom-git-init/guidelines/web/link.md
 )
